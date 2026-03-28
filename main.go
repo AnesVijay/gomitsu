@@ -1,6 +1,7 @@
 package main
 
 import (
+	"gomitsu/tgbot"
 	"log"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -19,14 +20,10 @@ var (
 // пример обработки сообщения через эту либу: https://github.com/go-telegram-bot-api/telegram-bot-api/blob/master/docs/examples/command-handling.md
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI(botToken)
-	if err != nil {
-		log.Panic()
-	}
 
-	// bot.Debug = true
+	conf := config.ReadConfigFile()
 
-	log.Printf("Authorized on account %s", bot.Self.UserName)
+	b := tgbot.BotInit()
 
 	u := tgbotapi.NewUpdate(0)
 	u.Timeout = 60
