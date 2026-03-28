@@ -26,6 +26,10 @@ func main() {
 	updates := bot.GetUpdatesChan(u)
 
 	for update := range updates {
+		// TODO: сделать что-то в духе switch-case
+		// TODO: нужны сценарии
+		//?? - регистрация (через моё одобрение по inline-клавиатуре, которая удаляется после принятия или отказа -> сообщение отмечает как лог моё действие)
+		//?? - отправка сообщений челикам из БД (общая отправка всем и только одному, когда это ссылка на подключение)
 
 		if update.Message != nil {
 			log.Printf("[%s (ID: %d)]: %s", update.Message.From.UserName, update.Message.From.ID, update.Message.Text)
